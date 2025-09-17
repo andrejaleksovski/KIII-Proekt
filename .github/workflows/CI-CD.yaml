@@ -58,8 +58,14 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Debug Docker Username
-        run: echo "DOCKER_USERNAME length: ${#DOCKER_USERNAME}"
+      - name: Check DOCKER_USERNAME presence
+        run: |
+          if [ -z "${DOCKER_USERNAME}" ]; then
+            echo "DOCKER_USERNAME NOT SET"
+            exit 1
+          else
+            echo "DOCKER_USERNAME is set"
+          fi
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
 
