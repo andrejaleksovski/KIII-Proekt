@@ -72,8 +72,9 @@ jobs:
       - name: Build and push container image to DockerHub
         uses: docker/build-push-action@v3
         with:
-          context: .
+          context: ./e-shop-backend-main
           push: true
+          file: ./e-shop-backend-main/Dockerfile
           tags: |
             ${{ secrets.DOCKER_USERNAME }}/kiiapp:latest
 
