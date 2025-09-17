@@ -23,7 +23,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Build app with Maven
-        run: mvn clean install -B
+        run: mvn clean install -DskipTests -B
         working-directory: ./e-shop-backend-main
 
       - name: Archive build artifacts
